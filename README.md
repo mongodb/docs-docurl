@@ -7,14 +7,15 @@ be included in source. It was purpose built for the MongoDB Documentation team.
 `tenzing --help`
 
 ## What it does
-Tenzing will read declared assets of any type and download them, though
-there is a special type. The special type is called "repository".
+Tenzing will read declared assets of any type and download them. Assets are delcared
+in an `assets.toml` file.
 
-### Repository
+### Repository Asset Type
 
-The repository type contains information about a source repository, and is meant
-to track versions. Tenzing can check if the version listed is out of date with the
-latest release version, and auto update the version in the assets list.
+The repository type is the only special purpose type. It contains information
+about a source repository, and is meant to track versions. Tenzing can check if
+the version listed is out of date with the latest release version, and auto-update
+the version in the assets list.
 
 Here's an example:
 
