@@ -1,0 +1,220 @@
+[assets.output_paths]
+repository_path = "source/driver-examples"
+image_path = "source/images"
+raw_path = "source/raw"
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-python-driver"
+version = "4.1.1"
+targets = [{ source = "test/test_examples.py", output = "test_examples.py" }]
+
+[[assets.sources.repository]]
+repo = "mongodb/motor"
+version = "2.5.1"
+targets = [
+    { source = "test/asyncio_tests/test_examples.py", output = "test_examples_motor.py" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb-labs/mongo-perl-driver"
+targets = [
+    { source = "t/examples/driver-examples.t", output = "driver-examples.t" },
+    { source = "t/examples/transaction.t", output = "perl-transactions-examples.t" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-php-library"
+version = "1.12.0"
+targets = [
+    { source = "tests/DocumentationExamplesTest.php", output = "DocumentationExamplesTest.php" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-java-driver"
+version = "r4.5.1"
+
+[[assets.sources.repository.targets]]
+source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
+output = "DocumentationSamples.java"
+
+[[assets.sources.repository.targets]]
+source = "driver-reactive-streams/src/examples/reactivestreams/documentation/DocumentationSamples.java"
+output = "AsyncDocumentationSamples.java"
+
+[[assets.sources.repository.targets]]
+source = "driver-sync/src/examples/documentation/CausalConsistencyExamples.java"
+output = "CausalConsistencyExamples.java"
+
+[[assets.sources.repository.targets]]
+source = "driver-scala/src/it/scala/org/mongodb/scala/documentation/DocumentationExampleSpec.scala"
+output = "DocumentationExampleSpec.scala"
+
+[[assets.sources.repository.targets]]
+source = "driver-scala/src/it/scala/org/mongodb/scala/documentation/DocumentationTransactionsExampleSpec.scala"
+output = "DocumentationTransactionsExampleSpec.scala"
+
+[[assets.sources.repository]]
+repo = "mongodb/node-mongodb-native"
+version = "v4.5.0"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/change_streams.test.js"
+output = "node_changestreams.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/array_filters.test.js"
+output = "node_array_filters.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/causal_consistency.test.js"
+output = "node_causal_consistency.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/insert.test.js"
+output = "node_insert.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/project_fields_from_query_results.test.js"
+output = "node_project.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/query.test.js"
+output = "node_query.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/query_embedded_documents.test.js"
+output = "node_query_embedded_documents.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/query_arrays.test.js"
+output = "node_query_arrays.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/query_array_of_documents.test.js"
+output = "node_query_array_of_documents.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/query_for_null_fields.test.js"
+output = "node_query_for_null_fields.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/remove_documents.test.js"
+output = "node_remove.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/transactions.test.js"
+output = "node_transactions.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/update_documents.test.js"
+output = "node_update.js"
+
+[[assets.sources.repository.targets]]
+source = "test/integration/node-specific/examples/versioned_api.js"
+output = "node_versioned_api.js"
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-ruby-driver"
+version = "v2.17.1"
+
+[[assets.sources.repository.targets]]
+source = "spec/integration/shell_examples_spec.rb"
+output = "shell_examples_spec.rb"
+
+[[assets.sources.repository.targets]]
+source = "spec/integration/change_stream_examples_spec.rb"
+output = "change_stream_examples_spec.rb"
+
+[[assets.sources.repository.targets]]
+source = "spec/integration/transactions_examples_spec.rb"
+output = "transactions_examples_spec.rb"
+
+[[assets.sources.repository.targets]]
+source = "spec/integration/transactions_api_examples_spec.rb"
+output = "with_transactions_examples_spec.rb"
+
+[[assets.sources.repository.targets]]
+source = "spec/integration/versioned_api_examples_spec.rb"
+output = "versioned_api_examples_spec.rb"
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-rust-driver"
+version = "v2.2.0"
+targets = [
+    { source = "src/test/documentation_examples/mod.rs", output = "mod.rs" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-csharp-driver"
+version = "v2.15.0"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/DocumentationExamples.cs"
+output = "DocumentationExamples.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/ChangeStreamExamples.cs"
+output = "ChangeStreamExamples.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/TransactionExamplesForDocs/RetryExample1.cs"
+output = "TransactionsRetryExample1.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/TransactionExamplesForDocs/RetryExample2.cs"
+output = "TransactionsRetryExample2.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/TransactionExamplesForDocs/RetryExample3.cs"
+output = "TransactionsRetryExample3.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/CausalConsistencyExamples.cs"
+output = "CausalConsistencyExamples.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/TransactionExamplesForDocs/WithTransactionExample1.cs"
+output = "withTxnExample1.cs"
+
+[[assets.sources.repository.targets]]
+source = "tests/MongoDB.Driver.Examples/VersionedApiExamples.cs"
+output = "VersionedApiExamples.cs"
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-c-driver"
+version = "1.21.1"
+
+[[assets.sources.repository.targets]]
+source = "src/libmongoc/tests/test-mongoc-sample-commands.c"
+output = "test-mongoc-sample-commands.c"
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-cxx-driver"
+version = "r3.6.6"
+targets = [
+    { source = "src/mongocxx/test/transactions.cpp", output = "cpp-transactions.cpp" },
+    { source = "examples/mongocxx/with_transaction.cpp", output = "cpp-with-transaction.cpp" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-go-driver"
+version = "v1.7.6"
+targets = [
+    { source = "examples/documentation_examples/examples.go", output = "go_examples.go" },
+]
+
+[[assets.sources.repository]]
+repo = "mongodb/mongo-swift-driver"
+version = "v1.2.0"
+targets = [
+    { source = "Examples/Docs/Sources/AsyncExamples/main.swift", output = "swiftAsync.swift" },
+    { source = "Examples/Docs/Sources/SyncExamples/main.swift", output = "swiftSync.swift" },
+]
+
+[[assets.sources.image]]
+source = "https://raw.githubusercontent.com/mongodb/docs-java/master/source/includes/figures/atlas_connection_select_cluster.png"
+output = "atlas_connection_select_cluster.png"
+
+[[assets.sources.raw]]
+source = "https://raw.githubusercontent.com/mongodb/mongo-cxx-driver/master/src/mongocxx/test/versioned_api.cpp"
+output = "cpp-versioned_api.cpp"
