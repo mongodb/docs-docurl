@@ -12,7 +12,7 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/motor"
-version = "2.5.1"
+version = "3.0.0"
 targets = [
     { source = "test/asyncio_tests/test_examples.py", output = "test_examples_motor.py" },
 ]
@@ -33,7 +33,7 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-java-driver"
-version = "r4.5.1"
+version = "r3.12.11"
 
 [[assets.sources.repository.targets]]
 source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
@@ -141,7 +141,7 @@ output = "versioned_api_examples_spec.rb"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-rust-driver"
-version = "v2.2.0"
+version = "v2.2.1"
 targets = [
     { source = "src/test/documentation_examples/mod.rs", output = "mod.rs" },
 ]
