@@ -2,7 +2,7 @@ from setuptools import setup
 import setuptools
 
 setup(
-    name="tenzing",
+    name="docurl",
     version="0.1.0",
     py_modules=["src"],
     packages=setuptools.find_packages(),
@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "tenzing = src.main:tenzing",
+            "docurl = src.main:docurl",
         ],
     },
 )

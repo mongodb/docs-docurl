@@ -1,19 +1,19 @@
-# Tenzing
+# DOCURL
 
 This tool is meant to handle management of remote assets that should
 be included in source. It was purpose built for the MongoDB Documentation team.
 
 ## TL;DR
-`tenzing --help`
+`DOCURL --help`
 
 ## What it does
-Tenzing will read declared assets of any type and download them. Assets are delcared
+DOCURL will read declared assets of any type and download them. Assets are delcared
 in an `assets.toml` file.
 
 ### Repository Asset Type
 
 The repository type is the only special purpose type. It contains information
-about a source repository, and is meant to track versions. Tenzing can check if
+about a source repository, and is meant to track versions. DOCURL can check if
 the version listed is out of date with the latest release version, and auto-update
 the version in the assets list.
 
@@ -29,13 +29,13 @@ targets = [
 ]
 ```
 
-Tenzing will check the version above against the release version, and update if
+DOCURL will check the version above against the release version, and update if
 it is outdated and instructed to do so. It will fetch the resources in the targets
 array at that tag.
 
 ### Source and Output
 
-Tenzing fetches the assets from *source* (after assembling the correct raw github url),
+DOCURL fetches the assets from *source* (after assembling the correct raw github url),
 and will output to a file named whatever is in *output*. The directory the file is put
 in is declared in the `assets.output_paths` entry:
 
@@ -47,10 +47,10 @@ raw_path = "source/raw"
 ```
 
 ### Other Types
-Tenzing supports fetching any arbitrary resource. Add resources to `assets.sources.x`
+DOCURL supports fetching any arbitrary resource. Add resources to `assets.sources.x`
 where x in the resource type that has a corresponding entry in `assets.output_paths`.
 
-These resource types have two keys, `source` and `output` that tell Tenzing
+These resource types have two keys, `source` and `output` that tell DOCURL
 where to fetch the asset and the filename to save it as. Output paths are
 calculated on static lookup - an asset of type `assets.sources.x` must have a
 corresponding entry in `assets.output_paths` of `x_path`.

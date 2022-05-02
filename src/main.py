@@ -11,13 +11,13 @@ from .manage_examples import (
 
 @click.group()
 @click.pass_context
-def tenzing(ctx):
+def docurl(ctx):
     g = get_gh_client()
     ctx.ensure_object(dict)
     ctx.obj["G"] = g
 
 
-@tenzing.command()
+@docurl.command()
 @click.pass_context
 def outdated(ctx):
     """
@@ -29,7 +29,7 @@ def outdated(ctx):
     click.echo(outdated)
 
 
-@tenzing.command()
+@docurl.command()
 @click.pass_context
 def update(ctx):
     """
@@ -41,7 +41,7 @@ def update(ctx):
     update_repos(outdated, assets)
 
 
-@tenzing.command()
+@docurl.command()
 @click.pass_context
 def fetch(ctx):
     """
@@ -52,11 +52,11 @@ def fetch(ctx):
     download_assets(assets, g)
 
 
-@tenzing.command()
+@docurl.command()
 @click.pass_context
 def carryme(ctx):
     """
-    Run Tenzing, end to end. This will update
+    Run docurl, end to end. This will update
     versioned asset versions, and fetch all assets.
     """
     g = ctx.obj["G"]
@@ -67,4 +67,4 @@ def carryme(ctx):
 
 
 if __name__ == "__main__":
-    tenzing()
+    docurl()
