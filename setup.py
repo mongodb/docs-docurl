@@ -3,7 +3,7 @@ import setuptools
 
 setup(
     name="docurl",
-    version="0.1.3",
+    version="0.1.4",
     py_modules=["src"],
     packages=setuptools.find_packages(),
     include_package_data=True,
