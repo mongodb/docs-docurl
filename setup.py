@@ -6,10 +6,10 @@ with open("README.md", "r") as fh:
 
 setup(
     name="docurl",
-    version="0.1.5",
+    version="0.2.0",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/terakilobyte/docurl",
+    url="https://github.com/mongodb/docs-docurl",
     py_modules=["src"],
     packages=setuptools.find_packages(),
     include_package_data=True,

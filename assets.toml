@@ -5,7 +5,7 @@ raw_path = "source/raw"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-python-driver"
-version = "4.1.1"
+version = "4.2.0"
 targets = [
     { source = "test/test_examples.py", output = "test_examples.py" },
 ]
@@ -26,14 +26,14 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-php-library"
-version = "1.12.0"
+version = "1.13.0"
 targets = [
     { source = "tests/DocumentationExamplesTest.php", output = "DocumentationExamplesTest.php" },
 ]
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-java-driver"
-version = "r3.12.11"
+version = "r4.7.0"
 
 [[assets.sources.repository.targets]]
 source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
@@ -57,7 +57,7 @@ output = "DocumentationTransactionsExampleSpec.scala"
 
 [[assets.sources.repository]]
 repo = "mongodb/node-mongodb-native"
-version = "v4.5.0"
+version = "v4.8.1"
 
 [[assets.sources.repository.targets]]
 source = "test/integration/node-specific/examples/change_streams.test.js"
@@ -117,7 +117,7 @@ output = "node_versioned_api.js"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-ruby-driver"
-version = "v2.17.1"
+version = "v2.18.1"
 
 [[assets.sources.repository.targets]]
 source = "spec/integration/shell_examples_spec.rb"
@@ -141,14 +141,14 @@ output = "versioned_api_examples_spec.rb"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-rust-driver"
-version = "v2.2.1"
+version = "v2.3.0"
 targets = [
     { source = "src/test/documentation_examples/mod.rs", output = "mod.rs" },
 ]
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-csharp-driver"
-version = "v2.15.0"
+version = "v2.17.1"
 
 [[assets.sources.repository.targets]]
 source = "tests/MongoDB.Driver.Examples/DocumentationExamples.cs"
@@ -184,7 +184,7 @@ output = "VersionedApiExamples.cs"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-c-driver"
-version = "1.21.1"
+version = "1.22.1"
 
 [[assets.sources.repository.targets]]
 source = "src/libmongoc/tests/test-mongoc-sample-commands.c"
@@ -192,7 +192,7 @@ output = "test-mongoc-sample-commands.c"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-cxx-driver"
-version = "r3.6.6"
+version = "r3.6.7"
 targets = [
     { source = "src/mongocxx/test/transactions.cpp", output = "cpp-transactions.cpp" },
     { source = "examples/mongocxx/with_transaction.cpp", output = "cpp-with-transaction.cpp" },
@@ -200,14 +200,14 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-go-driver"
-version = "v1.7.6"
+version = "v1.10.1"
 targets = [
     { source = "examples/documentation_examples/examples.go", output = "go_examples.go" },
 ]
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-swift-driver"
-version = "v1.2.0"
+version = "v1.3.1"
 targets = [
     { source = "Examples/Docs/Sources/AsyncExamples/main.swift", output = "swiftAsync.swift" },
     { source = "Examples/Docs/Sources/SyncExamples/main.swift", output = "swiftSync.swift" },
