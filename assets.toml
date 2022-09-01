@@ -7,7 +7,7 @@ raw_path = "source/raw"
 repo = "mongodb/mongo-python-driver"
 version = "4.2.0"
 targets = [
-    { source = "test/test_examples.py", output = "test_examples.py" },
+    { source = "test/test_examples.py", output = "test/test_examples.py" },
 ]
 
 [[assets.sources.repository]]
@@ -33,7 +33,7 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-java-driver"
-version = "r4.7.0"
+version = "r4.7.1"
 
 [[assets.sources.repository.targets]]
 source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
@@ -57,7 +57,7 @@ output = "DocumentationTransactionsExampleSpec.scala"
 
 [[assets.sources.repository]]
 repo = "mongodb/node-mongodb-native"
-version = "v4.8.1"
+version = "v4.9.1"
 
 [[assets.sources.repository.targets]]
 source = "test/integration/node-specific/examples/change_streams.test.js"
@@ -184,7 +184,7 @@ output = "VersionedApiExamples.cs"
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-c-driver"
-version = "1.22.1"
+version = "1.23.0"
 
 [[assets.sources.repository.targets]]
 source = "src/libmongoc/tests/test-mongoc-sample-commands.c"

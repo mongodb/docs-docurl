@@ -145,6 +145,8 @@ def fetch_asset(outloc, out, url):
         console.error(response.text)
         return False
     else:
+        # check if user has specified a subpath in the output and create it if needed
+        os.makedirs(os.path.dirname(os.path.join(outloc, out)), exist_ok=True)
         with open(os.path.join(outloc, out), "wb") as f:
             f.write(response.content)
         return True
