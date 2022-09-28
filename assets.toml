@@ -11,33 +11,33 @@ targets = [
 ]
 
 [[assets.sources.repository]]
-repo = "mongodb/motor"
-version = "3.0.0"
+repo = "mongodb/motor" # a comment
+version = "3.1.0"
 targets = [
     { source = "test/asyncio_tests/test_examples.py", output = "test_examples_motor.py" },
 ]
 
-[[assets.sources.repository]]
-repo = "mongodb-labs/mongo-perl-driver"
-targets = [
-    { source = "t/examples/driver-examples.t", output = "driver-examples.t" },
-    { source = "t/examples/transaction.t", output = "perl-transactions-examples.t" },
-]
+# [[assets.sources.repository]]
+# repo = "mongodb-labs/mongo-perl-driver"
+# targets = [
+#     { source = "t/examples/driver-examples.t", output = "driver-examples.t" },
+#     { source = "t/examples/transaction.t", output = "perl-transactions-examples.t" },
+# ]
 
-[[assets.sources.repository]]
-repo = "mongodb/mongo-php-library"
-version = "1.13.0"
-targets = [
-    { source = "tests/DocumentationExamplesTest.php", output = "DocumentationExamplesTest.php" },
-]
+# [[assets.sources.repository]]
+# repo = "mongodb/mongo-php-library"
+# version = "1.13.0"
+# targets = [
+#     { source = "tests/DocumentationExamplesTest.php", output = "DocumentationExamplesTest.php" },
+# ]
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-java-driver"
 version = "r4.7.1"
 
-[[assets.sources.repository.targets]]
-source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
-output = "DocumentationSamples.java"
+# [[assets.sources.repository.targets]]
+# source = "driver-sync/src/examples/documentation/DocumentationSamples.java"
+# output = "DocumentationSamples.java"
 
 [[assets.sources.repository.targets]]
 source = "driver-reactive-streams/src/examples/reactivestreams/documentation/DocumentationSamples.java"
@@ -57,7 +57,7 @@ output = "DocumentationTransactionsExampleSpec.scala"
 
 [[assets.sources.repository]]
 repo = "mongodb/node-mongodb-native"
-version = "v4.9.1"
+version = "v4.10.0"
 
 [[assets.sources.repository.targets]]
 source = "test/integration/node-specific/examples/change_streams.test.js"
@@ -200,7 +200,7 @@ targets = [
 
 [[assets.sources.repository]]
 repo = "mongodb/mongo-go-driver"
-version = "v1.10.1"
+version = "v1.10.2"
 targets = [
     { source = "examples/documentation_examples/examples.go", output = "go_examples.go" },
 ]

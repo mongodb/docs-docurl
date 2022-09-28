@@ -1,21 +1,14 @@
 import os
 import requests
-import tomli
-import tomli_w
+import tomlkit
 from github import Github
 from py_console import console
 
 
 def read_assets_file():
-
     try:
         with open("assets.toml", "rb") as f:
-            try:
-                assets_toml = tomli.load(f)
-            except tomli.TOMLDecodeError as e:
-                console.error("Failed to parse assets.toml")
-                console.error(e)
-                exit(1)
+            assets_toml = tomlkit.load(f)
     except FileNotFoundError:
         console.error(
             "No `assets.toml` file found. Please create one. See <this wiki article placeholer> for more information."
@@ -76,7 +69,7 @@ def update_repos(outdated, assets_toml):
             console.info(f"Updating {repo}@{version}...")
             assets_toml["assets"]["sources"]["repository"][i]["version"] = version
             with open("assets.toml", "wb") as f:
-                tomli_w.dump(assets_toml, f)
+                f.write(tomlkit.dumps(assets_toml).encode("utf-8"))
             console.success(f"{repo} updated to @{version}.")
 
 

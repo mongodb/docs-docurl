@@ -1,4 +1,3 @@
-from turtle import down
 import click
 from .manage_examples import (
     check_assets,
