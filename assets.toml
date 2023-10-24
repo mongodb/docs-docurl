@@ -220,3 +220,7 @@ output = "atlas_connection_select_cluster.png"
 [[assets.sources.raw]]
 source = "https://raw.githubusercontent.com/mongodb/mongo-cxx-driver/master/src/mongocxx/test/versioned_api.cpp"
 output = "cpp-versioned_api.cpp"
+
+[[assets.sources.repository]]
+repo = "10gen/mongosql-rs"
+targets = [{ source = "errors.md", output = "errors.md" }]
