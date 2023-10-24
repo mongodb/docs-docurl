@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="docurl",
-    version="0.5.2",
+    version="0.5.3",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mongodb/docs-docurl",
