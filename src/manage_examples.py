@@ -2,6 +2,7 @@ import os
 import requests
 import tomlkit
 from github import Github
+from github import Auth
 from py_console import console
 
 
@@ -27,7 +28,12 @@ def get_gh_client():
             "See https://github.com/settings/tokens to generate a new token, if needed."
         )
         exit(1)
-    g = Github(api_token)
+    auth = Auth.Token(api_token)
+    g = Github(auth=auth)
+    # repo = g.get_repo("10gen/mongosql-rs")
+    # foo = repo.get_contents("errors.md")
+    # console.log(foo.decoded_content.decode("utf-8"))
+
     return g
 
 
@@ -62,7 +68,7 @@ def check_assets(assets_toml, g):
 
 
 def update_repos(outdated, assets_toml):
-    for (i, source) in enumerate(assets_toml["assets"]["sources"]["repository"]):
+    for i, source in enumerate(assets_toml["assets"]["sources"]["repository"]):
         if source["repo"] in outdated.keys():
             repo = source["repo"]
             version = outdated[repo]
@@ -101,24 +107,25 @@ def dest_path(dest):
     return os.path.join(cwd, dest)
 
 
-def make_repo_resource_uri(repo, version, path):
-    return f"https://raw.githubusercontent.com/{repo}/{version}/{path}"
-
-
 def download_repository_assets(source, dest, g):
-
     fetched = 0
 
-    repo = source["repo"]
-    version = source.get("version", g.get_repo(repo).default_branch)
+    repo = g.get_repo(source["repo"])
+    console.info(f"Fetching assets for {repo.full_name}")
+    version = source.get("version", g.get_repo(source["repo"]).default_branch)
     outloc = dest_path(dest)
     os.makedirs(outloc, exist_ok=True)
     for target in source["targets"]:
         src = target["source"]
         out = target["output"]
 
-        url = make_repo_resource_uri(repo, version, src)
-        fetched += 1 if fetch_asset(outloc, out, url) else 0
+        try:
+            raw_content = repo.get_contents(src, ref=version)
+            content = bytes(raw_content.decoded_content.decode("utf-8"), "utf-8")
+            fetched += 1 if fetch_repo_asset(outloc, out, content) else 0
+        except Exception as e:
+            console.warn(f"Couldn't fetch content for {repo.full_name}/{src}")
+
     return fetched
 
 
@@ -129,6 +136,14 @@ def download_other_assets(source, dest):
     out = source["output"]
 
     return fetch_asset(outloc, out, src)
+
+
+def fetch_repo_asset(outloc, out, content):
+    # check if user has specified a subpath in the output and create it if needed
+    os.makedirs(os.path.dirname(os.path.join(outloc, out)), exist_ok=True)
+    with open(os.path.join(outloc, out), "wb") as f:
+        f.write(content)
+    return True
 
 
 def fetch_asset(outloc, out, url):
