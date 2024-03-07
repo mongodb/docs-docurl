@@ -13,7 +13,7 @@ setup(
     py_modules=["src"],
     packages=setuptools.find_packages(),
     include_package_data=True,
-    install_requires=["Click", "tomli", "tomli_w", "PyGithub", "py-console", "tomlkit"],
+    install_requires=["Click", "tomli", "tomli_w", "PyGithub", "tomlkit", "termcolor"],
     entry_points={
         "console_scripts": [
             "docurl = src.main:docurl",

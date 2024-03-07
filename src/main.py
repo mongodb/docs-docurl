@@ -1,12 +1,12 @@
 import click
-from .manage_examples import (
+
+from src.manage_examples import (
     check_assets,
     read_assets_file,
     download_assets,
     update_repos,
     get_gh_client,
 )
-
 
 @click.group()
 @click.pass_context
