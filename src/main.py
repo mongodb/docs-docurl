@@ -17,19 +17,21 @@ def docurl(ctx):
 
 @docurl.command()
 @click.pass_context
-def outdated(ctx):
+@click.option('--file', prompt='Assets file',
+              help='Relative path of an assets.toml file (optional)')
+def outdated(ctx, file):
     """
     List any outdated assets from `repository` entries.
     """
     g = ctx.obj["G"]
-    assets = read_assets_file()
+    assets = read_assets_file(file)
     outdated = check_assets(assets, g)
     click.echo(outdated)
 
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='assets file',
+@click.option('--file', prompt='Assets file',
               help='Relative path of an assets.toml file (optional)')
 def update(ctx, file):
     """
@@ -43,7 +45,7 @@ def update(ctx, file):
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='assets file',
+@click.option('--file', prompt='Assets file',
               help='Relative path of an assets.toml file (optional)')
 def fetch(ctx, file):
     """
@@ -56,13 +58,15 @@ def fetch(ctx, file):
 
 @docurl.command()
 @click.pass_context
-def carryme(ctx):
+@click.option('--file', prompt='Assets file',
+              help='Relative path of an assets.toml file (optional)')
+def carryme(ctx, file):
     """
     Run docurl, end to end. This will update
     versioned asset versions, and fetch all assets.
     """
     g = ctx.obj["G"]
-    assets = read_assets_file()
+    assets = read_assets_file(file)
     outdated = check_assets(assets, g)
     update_repos(outdated, assets)
     download_assets(assets, g)
