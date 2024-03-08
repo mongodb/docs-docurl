@@ -15,7 +15,6 @@ def docurl(ctx):
     ctx.ensure_object(dict)
     ctx.obj["G"] = g
 
-
 @docurl.command()
 @click.pass_context
 def outdated(ctx):
@@ -30,24 +29,28 @@ def outdated(ctx):
 
 @docurl.command()
 @click.pass_context
-def update(ctx):
+@click.option('--file', prompt='assets file',
+              help='Relative path of an assets.toml file (optional)')
+def update(ctx, file):
     """
     Update assets. This doesn't download assets by itself.
     """
     g = ctx.obj["G"]
-    assets = read_assets_file()
+    assets = read_assets_file(file)
     outdated = check_assets(assets, g)
     update_repos(outdated, assets)
 
 
 @docurl.command()
 @click.pass_context
-def fetch(ctx):
+@click.option('--file', prompt='assets file',
+              help='Relative path of an assets.toml file (optional)')
+def fetch(ctx, file):
     """
     Fetch all assets.
     """
     g = ctx.obj["G"]
-    assets = read_assets_file()
+    assets = read_assets_file(file)
     download_assets(assets, g)
 
 
