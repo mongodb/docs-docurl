@@ -29,4 +29,3 @@ tomli-w==1.0.0
 typing-extensions==4.1.1
 urllib3==1.26.9
 wrapt==1.14.0
-pyconsole==0.5
