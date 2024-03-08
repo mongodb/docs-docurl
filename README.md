@@ -12,7 +12,7 @@ in an `assets.toml` file.
 
 By default, the script opens the `assets.toml` file in the same directory
 as the command is run. To specify a different file, specify the relative
-path to it by using `--file` option as shown in the following example:
+path to it by using `--file` (or `-f`) option as shown in the following example:
 
 ```shell
 docurl fetch --file relative/path/to/my-assets.toml
