@@ -1,17 +1,30 @@
 import os
+import sys
 import requests
 import tomlkit
 from github import Github
 from github import Auth
-from py_console import console
+# from py_console import console
+from termcolor import colored
 
+def eprint(*args, **kwargs):
+    print(colored(*args, color="red"), file=sys.stderr, **kwargs)
+
+def wprint(*args, **kwargs):
+    print(colored(*args, color="yellow"), **kwargs)
+
+def iprint(*args, **kwargs):
+    print(colored(*args, color="blue"), **kwargs)
+
+def sprint(*args, **kwargs):
+    print(colored(*args, color="green"), **kwargs)
 
 def read_assets_file():
     try:
         with open("assets.toml", "rb") as f:
             assets_toml = tomlkit.load(f)
     except FileNotFoundError:
-        console.error(
+        eprint(
             "No `assets.toml` file found. Please create one. See <this wiki article placeholer> for more information."
         )
         exit(1)
@@ -20,21 +33,15 @@ def read_assets_file():
 
 
 def get_gh_client():
-    # API token is required to avoid rate-limiting
-    api_token = os.environ["GITHUB_API_TOKEN"]
-    if api_token is None:
-        console.error("Please set the GITHUB_API_TOKEN environment variable.")
-        console.warn(
+    try:
+        # API token is required to avoid rate-limiting
+        return Github(auth=Auth.Token(os.environ["GITHUB_API_TOKEN"]))
+    except KeyError:
+        eprint("Please set the GITHUB_API_TOKEN environment variable.")
+        eprint(
             "See https://github.com/settings/tokens to generate a new token, if needed."
         )
         exit(1)
-    auth = Auth.Token(api_token)
-    g = Github(auth=auth)
-    # repo = g.get_repo("10gen/mongosql-rs")
-    # foo = repo.get_contents("errors.md")
-    # console.log(foo.decoded_content.decode("utf-8"))
-
-    return g
 
 
 def check_assets(assets_toml, g):
@@ -60,10 +67,11 @@ def check_assets(assets_toml, g):
             out_of_date = True
 
     if not out_of_date:
-        console.success("All drivers versions are up to date.")
+        sprint("All drivers versions are up to date.")
     else:
-        console.warn("Some versions are out of date.")
-        console.warn(f"{', '.join([elem for elem in outdated.keys()])}")
+        wprint("Some versions are out of date.")
+        for k, v in outdated.items():
+            wprint(f"{k} is outdated. Latest version is {v}.")
     return outdated
 
 
@@ -72,11 +80,11 @@ def update_repos(outdated, assets_toml):
         if source["repo"] in outdated.keys():
             repo = source["repo"]
             version = outdated[repo]
-            console.info(f"Updating {repo}@{version}...")
+            iprint(f"Updating {repo}@{version}...")
             assets_toml["assets"]["sources"]["repository"][i]["version"] = version
             with open("assets.toml", "wb") as f:
                 f.write(tomlkit.dumps(assets_toml).encode("utf-8"))
-            console.success(f"{repo} updated to @{version}.")
+            sprint(f"{repo} updated to @{version}.")
 
 
 def download_assets(assets_toml, g):
@@ -99,7 +107,7 @@ def download_assets(assets_toml, g):
                     )
                     else 0
                 )
-    console.info(f"Fetched {fetched} files.")
+    iprint(f"Fetched {fetched} files.")
 
 
 def dest_path(dest):
@@ -110,23 +118,28 @@ def dest_path(dest):
 def download_repository_assets(source, dest, g):
     fetched = 0
 
-    repo = g.get_repo(source["repo"])
-    console.info(f"Fetching assets for {repo.full_name}")
-    version = source.get("version", g.get_repo(source["repo"]).default_branch)
-    outloc = dest_path(dest)
-    os.makedirs(outloc, exist_ok=True)
-    for target in source["targets"]:
-        src = target["source"]
-        out = target["output"]
+    try:
+        repo = g.get_repo(source["repo"])
+        iprint(f"Fetching assets for {repo.full_name}")
+        version = source.get("version", g.get_repo(source["repo"]).default_branch)
+        outloc = dest_path(dest)
+        os.makedirs(outloc, exist_ok=True)
+        for target in source["targets"]:
+            src = target["source"]
+            out = target["output"]
 
-        try:
-            raw_content = repo.get_contents(src, ref=version)
-            content = bytes(raw_content.decoded_content.decode("utf-8"), "utf-8")
-            fetched += 1 if fetch_repo_asset(outloc, out, content) else 0
-        except Exception as e:
-            console.warn(f"Couldn't fetch content for {repo.full_name}/{src}")
+            try:
+                raw_content = repo.get_contents(src, ref=version)
+                content = bytes(raw_content.decoded_content.decode("utf-8"), "utf-8")
+                fetched += 1 if fetch_repo_asset(outloc, out, content) else 0
+            except Exception as e:
+                eprint(f"Couldn't fetch content for {repo.full_name}/{src}")
 
-    return fetched
+        return fetched
+    except Exception as e:
+        eprint(f"Couldn't fetch {source['repo']}. Check that the repository exists, and your oauth token has access to it.")
+        return fetched
+
 
 
 def download_other_assets(source, dest):
@@ -149,8 +162,8 @@ def fetch_repo_asset(outloc, out, content):
 def fetch_asset(outloc, out, url):
     response = requests.get(url)
     if not response.ok:
-        console.error(f"Failed to fetch {url}")
-        console.error(response.text)
+        eprint(f"Failed to fetch {url}")
+        eprint(response.text)
         return False
     else:
         # check if user has specified a subpath in the output and create it if needed
