@@ -7,8 +7,19 @@ be included in source. It was purpose built for the MongoDB Documentation team.
 `DOCURL --help`
 
 ## What it does
-DOCURL will read declared assets of any type and download them. Assets are delcared
+DOCURL will read declared assets of any type and download them. Assets are declared
 in an `assets.toml` file.
+
+By default, the script opens the `assets.toml` file in the same directory
+as the command is run. To specify a different file, specify the relative
+path to it by using `--file` option as shown in the following example:
+
+```shell
+docurl fetch --file relative/path/to/my-assets.toml
+```
+
+**Note:** The `source` and `output` paths are always relative to where you
+run DOCURL rather than the path to the toml file.
 
 ### Repository Asset Type
 
@@ -35,7 +46,7 @@ array at that tag.
 
 ### Source and Output
 
-DOCURL fetches the assets from *source* (after assembling the correct raw github url),
+DOCURL fetches the assets from *source* (after assembling the correct raw GitHub url),
 and will output to a file named whatever is in *output*. The directory the file is put
 in is declared in the `assets.output_paths` entry:
 
@@ -48,7 +59,7 @@ raw_path = "source/raw"
 
 ### Other Types
 DOCURL supports fetching any arbitrary resource. Add resources to `assets.sources.x`
-where x in the resource type that has a corresponding entry in `assets.output_paths`.
+where x is the resource type that has a corresponding entry in `assets.output_paths`.
 
 These resource types have two keys, `source` and `output` that tell DOCURL
 where to fetch the asset and the filename to save it as. Output paths are
@@ -78,6 +89,8 @@ output = "cpp-versioned_api.cpp"
 ```
 
 ## Releasing
+
+Increment the `version` in `setup.py`.
 
 Releases are published automatically when a tag is pushed to GitHub.
 

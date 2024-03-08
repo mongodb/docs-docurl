@@ -19,13 +19,13 @@ def iprint(*args, **kwargs):
 def sprint(*args, **kwargs):
     print(colored(*args, color="green"), **kwargs)
 
-def read_assets_file():
+def read_assets_file(assets_filepath="assets.toml"):
     try:
-        with open("assets.toml", "rb") as f:
+        with open(assets_filepath, "rb") as f:
             assets_toml = tomlkit.load(f)
     except FileNotFoundError:
         eprint(
-            "No `assets.toml` file found. Please create one. See <this wiki article placeholer> for more information."
+            f"No file found at {assets_filepath}. To learn how to create one, see https://github.com/mongodb/docs-docurl/blob/main/README.md"
         )
         exit(1)
 
