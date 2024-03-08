@@ -17,8 +17,9 @@ def docurl(ctx):
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='Assets file',
-              help='Relative path of an assets.toml file (optional)')
+@click.option('--file', '-f', default='assets.toml',
+              help='Use a specific assets file',
+              show_default=True)
 def outdated(ctx, file):
     """
     List any outdated assets from `repository` entries.
@@ -31,8 +32,9 @@ def outdated(ctx, file):
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='Assets file',
-              help='Relative path of an assets.toml file (optional)')
+@click.option('--file', '-f', default='assets.toml',
+              help='Use a specific assets file',
+              show_default=True)
 def update(ctx, file):
     """
     Update assets. This doesn't download assets by itself.
@@ -45,8 +47,9 @@ def update(ctx, file):
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='Assets file',
-              help='Relative path of an assets.toml file (optional)')
+@click.option('--file', '-f', default='assets.toml',
+              help='Use a specific assets file',
+              show_default=True)
 def fetch(ctx, file):
     """
     Fetch all assets.
@@ -58,8 +61,9 @@ def fetch(ctx, file):
 
 @docurl.command()
 @click.pass_context
-@click.option('--file', prompt='Assets file',
-              help='Relative path of an assets.toml file (optional)')
+@click.option('--file', '-f', default='assets.toml',
+              help='Use a specific assets file',
+              show_default=True)
 def carryme(ctx, file):
     """
     Run docurl, end to end. This will update
