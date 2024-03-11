@@ -12,7 +12,7 @@ in an `assets.toml` file.
 
 By default, the script opens the `assets.toml` file in the same directory
 as the command is run. To specify a different file, specify the relative
-path to it by using `--file` option as shown in the following example:
+path to it by using `--file` (or `-f`) option as shown in the following example:
 
 ```shell
 docurl fetch --file relative/path/to/my-assets.toml
@@ -86,6 +86,24 @@ output = "atlas_connection_select_cluster.png"
 [[assets.sources.raw]]
 source = "https://raw.githubusercontent.com/mongodb/mongo-cxx-driver/master/src/mongocxx/test/versioned_api.cpp"
 output = "cpp-versioned_api.cpp"
+```
+
+
+## Developing
+
+For testing the package locally, run the following commands to set up a `virtualenv`
+and install the requirements:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Then, you can run the code by running the following command:
+
+```bash
+python -m src.main <commands>
 ```
 
 ## Releasing
